@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Title</title>
+<script>
+/* Defining Table
+ * Input: an array with some cards
+ * Processing: calculate the score. Add numbers. Jack queen and king are 10 points.
+ * Output:
+ */
+function golfScore(hand) {
+let score = 0;
+for (let i = 0 ; i < hand.length ; i++){
+    //determine if it is a face card or number card
+   
+      let card = hand[i];
+
+      if(card == "Jack" || card == "Queen" || card =="King"){
+          card = 10;
+      }
+        score+=card;
+  
+}
+return score;
+}
+console.log(golfScore([5, 20, 'Queen']))
+
+// create and return an array with cards values in it.
+function makeDeck(){
+    let deck = [ 
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King",
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King",
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King",
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"]
+return deck
+}
+//shuffle the deck
+function shuffle(deck){
+    for(let i = deck.length-1 ; i>=1 ; i--){
+        let j = Math.floor(Math.random()*(i+1));
+        let swap = deck[j];
+        deck[j] = deck[i];
+        deck[i] = swap;
+        
+    }
+    return deck;
+}
+function makeHand(){
+let deck = makeDeck();
+deck = shuffle(deck);
+//remove 6 cards and put them in the hand array
+let hand = [];
+for (let i = 0 ; i<6 ; i++){
+hand.push(deck.pop());
+}
+return hand;
+}
+
+</script>
+</head>
+
+<body>                
+    <input type="text" id="">
+
+    <button type="button" onclick="">Click</button>
+    <div id="output"></div>
+</body>
+</html>

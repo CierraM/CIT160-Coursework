@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Title</title>
+<script>
+/* Defining Table
+ * Input: 
+ * Processing:compute average of all numbers in an array
+ larger than 1000
+ * Output:
+ */
+function averageBig(list){
+//a loop. go through each number
+//decide if it is bigger than 1000
+//if it is, add it to the average
+//if not, ignore it
+//divide the average by the number of times you did this
+let sum = 0;
+let numberOfItems = 0;
+for( let i = 0; i < list.length; i++){
+    if(list[i] > 1000){
+        sum+=list[i];
+        numberOfItems++
+    }
+}
+if(numberOfItems == 0){
+    return 0;
+}
+else{
+    let avg = sum/numberOfItems;
+    return avg;
+}
+}
+console.log(averageBig([ 70, 1010, 950, 2014, 6 ]));
+console.log(averageBig([ -72.3, 3000, 873, 2312, 68, 7501.3 ]));
+console.log(averageBig([ 70, 950, 671, 6 ]));
+
+</script>
+</head>
+
+<body>                
+    
+</body>
+</html>

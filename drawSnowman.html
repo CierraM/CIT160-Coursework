@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Draw</title>
+<script src="draw.js"></script>
+
+<script>
+"use strict";
+
+/* Defining Table
+* Input: No use input
+* Processing: Draw the snow and the sky and three snowmen
+* Output: A scene with three snowmen
+*/
+function drawScene() {
+let canvas = document.getElementById('picture');
+let skyblue = makeColor3(220, 220, 255);
+let white = makeColor3(255, 255, 255);
+
+// Draw snow.
+fillRect(canvas, 0, 300, 600, 100, white);
+
+// Draw sky.
+fillRect(canvas, 0, 0, 600, 300, skyblue);
+
+// Draw three snowmen.
+drawSnowman(200, 100);
+drawSnowman(300, 50);
+drawSnowman(450, 80);
+}
+
+
+function drawSnowman(headX, headY) {
+let canvas = document.getElementById('picture');
+let lightgray = makeColor3(245, 245, 255);
+let darkgray = makeColor3(80, 80, 80);
+let orange = makeColor3(255, 128, 80);
+
+// Draw the snowman's head.
+fillCircle(canvas, headX, headY, 40, lightgray);
+
+// Draw the snowman's body.
+fillCircle(canvas, headX, headY + 90, 60, lightgray);
+
+// Draw the snowman's feet.
+fillCircle(canvas, headX, headY + 220, 80, lightgray);
+
+// Draw the eyes.
+fillCircle(canvas, headX - 15, headY, 5, darkgray);
+fillCircle(canvas, headX + 15, headY, 5, darkgray);
+
+// Draw the nose.
+fillTri(canvas, headX - 5, headY + 4, headX, headY + 24, headX + 5, headY + 4, orange);
+}
+</script>
+</head>
+
+<body>
+<button type="button" onclick="drawScene()">Draw</button><br>
+<canvas id="picture" width="600" height="400" style="border:1px solid"></canvas>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Image Carousel</title>
+
+	<style>
+		div.picture { width: 300px; height: 300px; }
+		div.picture > img { width: 300px; }
+
+		div.thumbs { height: 60px; }
+		div.thumbs > img { margin: 2px; border: 1px solid transparent; padding: 2px; width: 50px; }
+		div.thumbs > img.displayed { border: 1px solid gray; }
+	</style>
+	
+	<script>
+		"use strict";
+
+		var images = [ 'penguin.jpg', 'kingfisher.jpg', 'koala.jpg', 'opera.jpg', 'smiley.jpg', 'puppy.jpg', 'flower.jpg' ];
+		var index = 0;
+		var interval = 3000;  // 3000 milliseconds
+		var func;
+
+
+		function initialize() {
+			// Create and show to the user a list of thumbnail images.
+			var html = '';
+			for (var i = 0;  i < images.length;  i++) {
+				html += '<img onclick="specific(' + i + ')" src="' + images[i] + '">';
+			}
+			document.getElementById('thumbs').innerHTML = html;
+
+			after(next);
+		}
+
+
+		function before() {
+			// Clear the timeout if there is one pending.
+			clearTimeout(func);
+
+			// Remove the border from the thumbnail image that has a border.
+			var thumbs = document.getElementById('thumbs');
+			var list = thumbs.getElementsByTagName('img');
+			var img = list[index];
+			img.classList.remove('displayed');
+		}
+
+
+		function previous() {
+			before();
+			index--;
+			if (index < 0) {
+				index = images.length - 1;
+			}
+			document.getElementById('picture').src = images[index];
+			after(previous);
+		}
+
+
+		function specific(which) {
+			before();
+			index = which;
+			document.getElementById('picture').src = images[index];
+			after(next);
+		}
+
+
+		function next() {
+			before();
+			index++;
+			if (index >= images.length) {
+				index = 0;
+			}
+			document.getElementById('picture').src = images[index];
+			after(next);
+		}
+
+
+		function after(f) {
+			// Add a border to thumbnail of the image that is currently displayed.
+			var thumbs = document.getElementById('thumbs');
+			var list = thumbs.getElementsByTagName('img');
+			var img = list[index];
+			img.classList.add('displayed');
+
+			// Set a timeout to call function f again.
+			func = setTimeout(f, interval);
+		}
+	</script>
+</head>
+
+<body onload="initialize()">
+	<div class="picture">
+	<img id="picture" width="300" src="penguin.jpg"><br>
+	</div>
+	<div class="thumbs" id="thumbs"></div>
+	<button type="button" onclick="previous()">Previous</button>
+	<button type="button" onclick="next()">Next</button><br>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Title</title>
+<script>
+/* Defining Table
+ * Input: an array
+ * Processing: count the number of even integers in the array
+ * Output: number of even integers in the array
+ */
+function countEvens(list){
+//determine which numbers are even
+//determine how many of them there are
+let numberOfEvens = 0;
+for (let i = 0 ; i < list.length ; i++ ){
+    if (list[i] % 2 == 0 ){
+        numberOfEvens++;
+    }
+}
+ return numberOfEvens;
+}
+
+console.log(countEvens([ 17, 8, 9, 5, 20 ])); // return 2
+console.log(countEvens([ 12, -4, 8, 15, 17, -5, 20, 11 ])) // return 4
+console.log(countEvens([ 3, 7, 9 ]))
+
+
+</script>
+</head>
+
+<body>                
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Title</title>
+<script>
+/* Defining Table
+ * Input: an array
+ * Processing: find the middle most number, or the average of the two middle numbers
+ * Output: none
+ */
+function getMiddle(list) {
+    
+    if(list.length % 2 != 0){
+        let middleIndex = Math.floor(list.length/2);
+        return list[middleIndex];       
+    }
+else{
+    let right = (list.length)/2;
+    let left = ((list.length)/2)-1;
+    let avg = (list[left] + list[right])/2;
+    return avg;
+}
+
+
+
+
+    
+
+}
+
+let banana = getMiddle([ 5, 3, 18, 9, 10, 14 ])
+console.log(banana);
+
+</script>
+</head>
+
+<body>                
+    
+</body>
+</html>

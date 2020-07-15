@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Title</title>
+<script>
+/* Defining Table
+ * Input: an array, a multiplier
+ * Processing: multiply each number in the array
+ * Output: a new array with the multiplied numbers
+ */
+function multiply(list, multiplier) {
+    //multiply each item
+let multiplied = new Array(list.length);
+for( let i = 0 ; i < list.length ; i++){
+    multiplied[i] = list[i] * multiplier;
+}
+return multiplied;
+   
+}
+console.log(multiply([ 17, 8, 9, 5, 20 ], 3)); // return [ 51, 24, 27, 15, 60 ]
+console.log(multiply([ -4, 3, 2.1, 6 ], 2)); // return [ -8, 6, 4.2, 12 ]
+
+
+</script>
+</head>
+
+<body>                
+
+</body>
+</html>
